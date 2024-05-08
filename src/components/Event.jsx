@@ -2,62 +2,33 @@ import { LuCalendarClock } from "react-icons/lu";
 import { FaClipboardList } from "react-icons/fa";
 import { BiSolidCommentDetail } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
-import {Text} from '@consta/uikit/Text'
 
-export default function Event({event}){
-    let code
-    const messagePersonCode = (
-        <>
-            <Text>{event.message}</Text>
-            <Text view="secondary" size="s">Ответственный {event.person}</Text>
-        </>
-    )
-    if (event.type === "meeting") {
-        code = (
+export default function Event({event, myDate}){
+    function codeFunc(eventType, eventDate, eventMessage, eventPerson){
+        return (
             <>
-            <span>
-                <LuCalendarClock /> 
-                Запланировання встреча
-            </span>
-            {messagePersonCode}
+                <span>
+                    {eventType==='meeting'?<div><LuCalendarClock/></div>:null}
+                    {event.type === "comment"?<div><BiSolidCommentDetail/></div>:null}
+                    {event.type === "whatsapp"?<div className="whats-app"><FaWhatsapp /></div>:null}
+                    {event.type === "task"?<div><FaClipboardList/></div>:null}
+                    <p className="event-type">
+                        {eventType==='meeting'? ('Запланированная встреча'):null}
+                        {eventType==='comment'? ('Комментарий'):null}
+                        {eventType==='whatsapp'? ('Сообщение в WhatsApp'):null}
+                        {eventType==='task'? ('Задача'):null}
+                        {eventType==='tg'? ('Сообщение в Telegram'):null}
+                    </p>
+                    <p className="event-date">{myDate(eventDate)}</p>
+                </span>
+                <p className="event-message">{eventMessage}</p>
+                <p className="event-person">Ответственный {eventPerson}</p>
             </>
         )
-    }else if(event.type === "task"){
-        code = (<>
-            <span>
-                <FaClipboardList />
-                Задача
-            </span>
-            {messagePersonCode}
-        </>)
-    }else if(event.type === "comment"){
-        code = (<>
-            <span>
-                <BiSolidCommentDetail />
-                Комментарий
-            </span>
-            {messagePersonCode}
-        </>)
-    }else if(event.type === "comment"){
-        code = (<>
-            <span>
-                <BiSolidCommentDetail />
-                Комментарий
-            </span>
-            {messagePersonCode}
-        </>)
-    }else if(event.type === "whatsapp"){
-        code = (<>
-            <span>
-                <FaWhatsapp />
-                Сообщение в WhatsApp
-            </span>
-            {messagePersonCode}
-        </>)
     }
     return (
-        <div style={{marginTop: '5px', padding: '5px'}}>
-            {code}
+        <div>
+            {codeFunc(event.type, event.date, event.message, event.person )}
         </div>
             
 

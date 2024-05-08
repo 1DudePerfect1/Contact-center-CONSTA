@@ -1,0 +1,120 @@
+{
+  "name": "PLANI",
+  "createdAt": "2024-05-01T18:11:13.917Z",
+  "modifiedAt": "2024-05-01T18:11:13.917Z",
+  "theme": {
+    "colors": {
+      "light": {
+        "$color-base-base": "#000000",
+        "$color-base-essential": "#FFFFFF",
+        "$color-base-project": "#E94C46",
+        "$color-base-phantom": "#000000",
+        "$color-base-path": "#E94C46",
+        "$color-base-system": "#E94C46",
+        "$color-base-success": "#22C38E",
+        "$color-base-alert": "#EB5757",
+        "$color-base-warning": "#F38B00",
+        "$color-base-caution": "#F2C94C",
+        "$color-base-normal": "#56B9F2",
+        "$color-base-critical": "#33000F"
+      },
+      "dark": {
+        "$color-base-base": "#FFFFFF",
+        "$color-base-essential": "#22272B",
+        "$color-base-project": "#0071B2",
+        "$color-base-phantom": "#F6FBFD",
+        "$color-base-path": "#0078D2",
+        "$color-base-system": "#4B5963",
+        "$color-base-success": "#22C38E",
+        "$color-base-alert": "#F54D4D",
+        "$color-base-warning": "#F38B00",
+        "$color-base-caution": "#F2C94C",
+        "$color-base-normal": "#0AA5FF",
+        "$color-base-critical": "#33000F"
+      }
+    },
+    "font": {
+      "font": "Monsterrat",
+      "size": 0,
+      "lineHeight": 0
+    },
+    "space": 2,
+    "radius": 4,
+    "shadow": {
+      "colors": {
+        "light": {
+          "--shadow-group": [
+            "rgba(0, 32, 51, 0.02)",
+            "rgba(0, 32, 51, 0.16)"
+          ],
+          "--shadow-layer": [
+            "rgba(0, 32, 51, 0.04)",
+            "rgba(0, 32, 51, 0.12)"
+          ],
+          "--shadow-modal": [
+            "rgba(0, 32, 51, 0.04)",
+            "rgba(0, 32, 51, 0.12)"
+          ]
+        },
+        "dark": {
+          "--shadow-group": [
+            "rgba(0, 0, 0, 0.08)",
+            "rgba(0, 0, 0, 0.32)"
+          ],
+          "--shadow-layer": [
+            "rgba(0, 0, 0, 0.08)",
+            "rgba(0, 0, 0, 0.32)"
+          ],
+          "--shadow-modal": [
+            "rgba(0, 0, 0, 0.08)",
+            "rgba(0, 0, 0, 0.32)"
+          ]
+        }
+      },
+      "params": {
+        "--shadow-group": {
+          "x": [
+            0,
+            0
+          ],
+          "y": [
+            2,
+            2
+          ],
+          "blur": [
+            2,
+            8
+          ]
+        },
+        "--shadow-layer": {
+          "x": [
+            0,
+            0
+          ],
+          "y": [
+            4,
+            8
+          ],
+          "blur": [
+            4,
+            24
+          ]
+        },
+        "--shadow-modal": {
+          "x": [
+            0,
+            0
+          ],
+          "y": [
+            8,
+            12
+          ],
+          "blur": [
+            8,
+            28
+          ]
+        }
+      }
+    }
+  }
+}

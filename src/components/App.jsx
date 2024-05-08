@@ -4,8 +4,7 @@ import {Grid, GridItem} from '@consta/uikit/Grid'
 import Deal from './Deal';
 import CreateTask from './CreateTask';
 import History from './History';
-import { useRef } from 'react';
-import { FaRoad } from 'react-icons/fa6';
+
 
 export default function App() {
   const companyList = contracts.map(item => {return ({id: item.id, label: item.company})})
@@ -13,14 +12,11 @@ export default function App() {
   const stageList = contracts.map(item => {return ({id: item.id, label: item.stage})})
   const agentList = contracts.map(item => {return ({id: item.id, label: item.agent, subLabel: 'sobaka@gmail.com'})})
   const contactsList = contracts.map(item => {return ({id: item.id, label: item.contacts, subLabel: 'koshka@gmail.com'})})
-
-  const scrollContainerRef = useRef(null);
-  const fixedRef = useRef(null);
   
   return (
     <>
       <OwnTabs items={['Основное','История изменений']}/>
-        <Layout>
+        <Grid>
           <Grid>
             <GridItem>
               <Deal 
@@ -44,7 +40,7 @@ export default function App() {
               <History events={contracts[0].events}/>  
             </Layout>
           </Layout>
-       </Layout>
+        </Grid>
     </>
       
       

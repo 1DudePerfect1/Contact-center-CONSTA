@@ -7,15 +7,17 @@ export default function History({events}){
       function myDate(date){
         return date.toLocaleDateString()+' '+ date.toLocaleTimeString().substring(0,5)
       }
+
       function createTitleDate(date, titleDateArray){
         if(!titleDateArray.includes(date)){
             titleDateArray.unshift(date)
-            return <p className="title-date">{date === new Date().toLocaleDateString() ? 'Сегодня': date}</p>
+            return <span className="title-date">{date === new Date().toLocaleDateString() ? 'Сегодня': date}</span>
         }
       }
+      
     return (
         <>
-            <Layout direction="column" >
+
                 {events.map(el => 
                     <>
                         {createTitleDate(el.date.toLocaleDateString(),titleDateArray)}
@@ -28,7 +30,6 @@ export default function History({events}){
                     </>                    
                 )}
                 {console.log(titleDateArray)}
-            </Layout>
             
         </>
     )

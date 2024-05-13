@@ -5,6 +5,7 @@ import CreateTask from './CreateTask';
 import History from './History';
 import {Theme, presetGpnDefault} from '@consta/uikit/Theme'
 import {myPresset} from '@consta/uikit/Theme'
+import { Fragment } from 'react';
 
 export default function App() {
   const companyList = contracts.map(item => {return ({id: item.id, label: item.company})})
@@ -14,68 +15,73 @@ export default function App() {
   const contactsList = contracts.map(item => {return ({id: item.id, label: item.contacts, subLabel: 'koshka@gmail.com'})})
   
   return (
+    <Fragment>
+      <HeadTabs/>
+        <div className='main'>
+      {/* <Grid 
+      cols={1} 
+      breakpoints={{
+          640: {
+            cols: 10,
+          },
+        }}> */}
 
-    <div className='main'>
-      <Theme preset={presetGpnDefault}>
-        <HeadTabs/>
-        <Grid 
-        cols={1} 
-        breakpoints={{
-            640: {
-              cols: 10,
-            },
-          }}>
-
-            <GridItem 
-            col={1}
-            breakpoints={{
-                640: {
-                  col: 4,
-                  row: 2,
-                },
-              }}
-            >
-                <div className="deal">
-                    <Deal 
-                    deal={contract}
-                    companyList={companyList}
-                    directionList={directionList}
-                    stageList={stageList}
-                    agentList={agentList}
-                    contactsList={contactsList}  />
-                </div>
+          {/* <GridItem 
+          col={1}
+          breakpoints={{
+              640: {
+                col: 4,
+                row: 2,
+              },
+            }}
+          > */}
               
-            </GridItem>
-            
-            <GridItem
-            col={1}
-            breakpoints={{
-                640: {
-                  col: 6,
-                },
-              }} 
-            >
-                    <CreateTask/>
-            </GridItem>
+              <div className="deal">
+              <Theme preset={presetGpnDefault}>
+                  <Deal 
+                  deal={contract}
+                  companyList={companyList}
+                  directionList={directionList}
+                  stageList={stageList}
+                  agentList={agentList}
+                  contactsList={contactsList}  />
+                </Theme>
+              </div>
+              
+          {/* </GridItem> */}
+          
+          {/* <GridItem
+          col={1}
+          breakpoints={{
+              640: {
+                col: 6,
+              },
+            }} 
+          > */}
+                  <CreateTask/>
+          {/* </GridItem> */}
 
-            <GridItem 
-            col={1}
-            colStart={1}
-            breakpoints={{
-                640: {
-                  col: 6,
-                  colStart: 5,
-                },
-              }}>
-                <div className="events">
-                    <History events={contract.events}/> 
-                </div>
-            </GridItem>
-        </Grid>
-      </Theme> 
-    </div>
- 
-      
+          {/* <GridItem 
+          col={1}
+          colStart={1}
+          breakpoints={{
+              640: {
+                col: 6,
+                colStart: 5,
+              },
+            }}> */}
+              <div className="events">
+                  <History events={contract.events}/> 
+              </div>
+          {/* </GridItem>
+      </Grid> */}
+
+      </div>
+
+    
+    </Fragment>
+
+    
   );
 }
 

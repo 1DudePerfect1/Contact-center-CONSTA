@@ -1,5 +1,5 @@
-import { TextField } from "@consta/uikit/TextField";
-import {Button} from '@consta/uikit/Button'
+// import { TextField } from "@consta/uikit/TextField";
+// import {Button} from '@consta/uikit/Button'
 import { useState } from "react";
 import { Layout } from "@consta/uikit/Layout";
 import {FileField} from '@consta/uikit/FileField'
@@ -32,7 +32,7 @@ export default function CreateTask(){
                 onChange={handleChangeText}
                 type="textarea"
                 rows={open?3:1}
-                placeholder="Напишите ваш комментарий"  /> */}
+                placeholder="Напишите ваш комментарий"  /> CONSTA */}
                 <div
                 className="content-parent"
                 ref={contentRef}
@@ -43,8 +43,9 @@ export default function CreateTask(){
                             <Text view="secondary" size="s" lineHeight="m">Нажми меня</Text>
                         </FileField>
                         <Layout>
-                            <Button label='Отправить'/>
-                            <Button label='Отмена' view="clear"/>
+                            <button className="send-btn">Отправить</button>
+                            <button className="send-btn">Отмена</button>
+                            {/* <Button label='Отмена' view="clear"/>  CONSTA*/}
                         </Layout>
                     </div>
                 </div>

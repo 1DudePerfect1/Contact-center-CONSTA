@@ -2,20 +2,20 @@
 
 .create-task{
     grid-area: task;
-    padding: 1em;
+    padding: 0.7em 1.5em;
     border-radius: 4px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     height: 20vh;
+    min-width: 0;
     .tabs{
       margin: 0;
     }
     .tabs button{
-      padding-right: 1em;
       border-radius: 0 ;
       border-bottom: 1px solid #00426947;
-      color: #00203399;
+      color: #06330099;
       font-family: 'Inter';
     }
     .tabs button:hover{
@@ -25,13 +25,19 @@
     }
   
     textarea{
-      margin-top: 1px;
+      margin: 0.5rem 0 0 0.5rem;
       border-style: none;
       resize: none;
       outline: none;
+      font-size: 0.9em;
+      font-family: 'Montserrat';
     }
     .file-field{
       margin: 1vh 0;
+      span{
+        font-size: 0.8em;
+        margin-left: 0.5em;
+      }
     }
     .send-btn{
       

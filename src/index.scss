@@ -37,19 +37,54 @@ body{
   gap: 1%;
 }
 
-@media (max-width: 768px) {
+.btn-header{
+  &:last-child{
+    &:hover{
+      border: 1px solid #aaaaaa;
+    }
+  }
+  &:hover{
+    border: 1px solid #a70903;
+  }
+}
+
+@media (max-width: 800px) {
   .main{
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    justify-content: start;
     grid-template-areas: 
     "deal"
     "task"
-    "event"
+    "event";
+    gap: 1%;
   }
-  .deal{
+  .deal-section{
     overflow: hidden;
     margin-bottom: 10px;
   }
+  .header{
+    h2{
+      font-size: 1em;
+      overflow: scroll;
+    }
+  }
+  .deal{
 
+  }
+  body{
+    padding: 3vh 0 0 0 ;
+    width: 100vw;
+  }
+  .create-task{
+    padding: 1em;
+    .tabs{
+      overflow: scroll;
+      button{
+        font-size: 1em;
+      }
+    }
+
+  }
 
 }

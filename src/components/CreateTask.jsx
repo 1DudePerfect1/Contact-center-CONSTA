@@ -10,7 +10,7 @@ import axios from "axios";
 
 export default function CreateTask({handleClick, setType, type}){
     const [taskContent, setTaskContent] = useState('')
-    const number = '79276388221'
+    const number = '79991309576'
     const username = ''
 
 
@@ -85,7 +85,7 @@ export default function CreateTask({handleClick, setType, type}){
                 <div className="file-field">
                 <FileField>     
                     <FaPaperclip />
-                    <span>Нажми меня</span>
+                    <span>Прикрепить</span>
                 </FileField>
                 </div>
                 <Layout>

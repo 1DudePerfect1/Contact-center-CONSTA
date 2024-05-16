@@ -1,11 +1,11 @@
 
 .deal{
-    height: 80vh;
+    height: 78vh;
     display: flex;
     gap: 1rem;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     color: #6E6E6E;
@@ -19,4 +19,5 @@
 
 .deal-section{
     grid-area: deal;
+    min-width: 100px;
 }

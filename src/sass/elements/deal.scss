@@ -1,0 +1,22 @@
+
+.deal{
+    height: 80vh;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    color: #6E6E6E;
+    overflow: scroll;
+    .deal-container{
+      display: flex;
+      align-items: end;
+      gap: 1vw;
+    }
+}
+
+.deal-section{
+    grid-area: deal;
+}

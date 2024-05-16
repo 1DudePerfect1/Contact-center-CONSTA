@@ -29,7 +29,6 @@ export default function History({events}){
                         </div> 
                     </>                    
                 )}
-                {console.log(titleDateArray)}
             
         </>
     )

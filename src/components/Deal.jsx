@@ -22,8 +22,7 @@ export default function Deal({deal, companyList, directionList, stageList, agent
     
 
     return(
-        <div className="deal">
-
+        <div className='deal'>
             <div className="deal-container">
                 <DatePicker
                 label='Дата заключения'
@@ -95,7 +94,6 @@ export default function Deal({deal, companyList, directionList, stageList, agent
             items={contactsList}
             deal={deal.contacts}  /> 
             </div>
- 
         </div>
     )
 }

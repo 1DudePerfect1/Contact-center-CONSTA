@@ -3,29 +3,77 @@
 import { useState } from "react";
 import { Layout } from "@consta/uikit/Layout";
 import {FileField} from '@consta/uikit/FileField'
-import {Text} from '@consta/uikit/Text'
+// import {Text} from '@consta/uikit/Text' CONSTA
 import { FaPaperclip } from "react-icons/fa6";
 import TaskTabs from './TaskTabs';
-import { useRef } from "react";
+import axios from "axios";
 
-export default function CreateTask(){
-    const [open, setOpen] = useState(false)
-    const [text, setText] = useState(null)
-    const contentRef = useRef();
-    if (contentRef.current) console.log(contentRef.current.scrollHeight);
-    const handleChangeText = (value) => {
-        setText(value)
-    }
-    const toggle = () => setOpen(!open) 
+export default function CreateTask({handleClick, setType, type}){
+    const [taskContent, setTaskContent] = useState('')
+    const number = '79276388221'
+    const username = ''
+
+
+    const handleSubmit = () => {
+        if (taskContent.trim() !== '') {
+            if (type === 'whatsapp') {
+                axios.post(`https://wappi.pro/api/sync/message/send?profile_id=${'588de407-339c'}`, 
+                  {
+                    body: taskContent,
+                    recipient: number
+                  },
+                  {
+                    headers: {
+                      'Authorization': 'a619051fed17a059b8c63cc4128c9a15e7a2632d',
+                      'Content-Type': 'application/json'
+                    }
+                  }
+                )
+                .then(response => {
+                  console.log('Сообщение отправлено успешно:', response.data);
+                  handleClick(taskContent);  // Далее обработка, если нужно
+                })
+                .catch(error => {
+                  console.error('Ошибка при отправке сообщения:', error);
+                });
+            }
+            else if(type === 'tg') {
+                axios.post(`https://wappi.pro/tapi/sync/message/send?profile_id=${'27a15f36-ba3a'}`, 
+                  {
+                    body: taskContent,
+                    recipient: number
+                  },
+                  {
+                    headers: {
+                      'Authorization': 'a619051fed17a059b8c63cc4128c9a15e7a2632d',
+                      'Content-Type': 'application/json'
+                    }
+                  }
+                )
+                .then(response => {
+                  console.log('Сообщение отправлено успешно:', response.data);
+                  handleClick(taskContent);  // Далее обработка, если нужно
+                })
+                .catch(error => {
+                  console.error('Ошибка при отправке сообщения:', error);
+                });
+            }else{
+              handleClick(taskContent);
+            }
+            setTaskContent(''); // Очистка текстового поля после отправки
+        }
+      };
 
     return (
         <div className="create-task">
-            <Layout direction="column">
-                <TaskTabs/>
+                <TaskTabs setType={setType} type={type}/>
                 <textarea 
                 placeholder='Напишите ваш комментарий' 
-                onClick={toggle}
-                value={text}></textarea>
+                value={taskContent}
+                rows={4}
+                name="message"
+                onChange={e => setTaskContent(e.target.value)}></textarea>
+                
                 {/* <TextField
                 onClick={toggle}
                 value={text}
@@ -33,24 +81,18 @@ export default function CreateTask(){
                 type="textarea"
                 rows={open?3:1}
                 placeholder="Напишите ваш комментарий"  /> CONSTA */}
-                <div
-                className="content-parent"
-                ref={contentRef}
-                style={open ? { height: contentRef.current.scrollHeight +"px" } : { height: "0px" }}>
-                    <div className="content">
-                        <FileField>
-                            <FaPaperclip />
-                            <Text view="secondary" size="s" lineHeight="m">Нажми меня</Text>
-                        </FileField>
-                        <Layout>
-                            <button className="send-btn">Отправить</button>
-                            <button className="send-btn">Отмена</button>
-                            {/* <Button label='Отмена' view="clear"/>  CONSTA*/}
-                        </Layout>
-                    </div>
+
+                <div className="file-field">
+                <FileField>     
+                    <FaPaperclip />
+                    <span>Нажми меня</span>
+                </FileField>
                 </div>
-                
-            </Layout> 
+                <Layout>
+                    <button className="send-btn" onClick={() => handleSubmit()}>Отправить</button>
+                    <button className="send-btn">Отмена</button>
+                    {/* <Button label='Отмена' view="clear"/>  CONSTA*/}
+                </Layout>
         </div>
         
     )

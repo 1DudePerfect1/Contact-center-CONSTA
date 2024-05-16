@@ -1,12 +1,13 @@
+import { useEffect, useState } from 'react';
 import HeadTabs from './HeadTabs';
-import {Grid, GridItem} from '@consta/uikit/Grid'
+// import {Grid, GridItem} from '@consta/uikit/Grid'
 import Deal from './Deal';
 import CreateTask from './CreateTask';
 import History from './History';
 import {Theme, presetGpnDefault} from '@consta/uikit/Theme'
-import {myPresset} from '@consta/uikit/Theme'
+// import {myPresset} from '@consta/uikit/Theme'
 import { Fragment } from 'react';
-
+import { Header } from './Header';
 export default function App() {
   const companyList = contracts.map(item => {return ({id: item.id, label: item.company})})
   const directionList = contracts.map(item => {return ({id: item.id, label: item.direction})})
@@ -14,8 +15,25 @@ export default function App() {
   const agentList = contracts.map(item => {return ({id: item.id, label: item.agent, subLabel: 'sobaka@gmail.com'})})
   const contactsList = contracts.map(item => {return ({id: item.id, label: item.contacts, subLabel: 'koshka@gmail.com'})})
   
+  const [events,setEvents] = useState(contract.events)
+  const [type, setType] = useState('comment');
+ 
+  const handleClickSubmit = (message) => {
+    console.log(events)
+    setEvents(prevEvents => [
+      ...prevEvents,
+      {id: prevEvents.length + 1, type: type, message: message, person: "Ildar Suleymanov", date: new Date()}
+    ]
+    )
+  }
+
+  useEffect(() => {
+    console.log('as')
+  }, [events])
+  
   return (
     <Fragment>
+      <Header name={contract.name}/>
       <HeadTabs/>
         <div className='main'>
       {/* <Grid 
@@ -24,7 +42,7 @@ export default function App() {
           640: {
             cols: 10,
           },
-        }}> */}
+        }}> CONSTA*/}
 
           {/* <GridItem 
           col={1}
@@ -34,9 +52,8 @@ export default function App() {
                 row: 2,
               },
             }}
-          > */}
-              
-              <div className="deal">
+          > CONSTA*/}
+          <div className="deal-section">    
               <Theme preset={presetGpnDefault}>
                   <Deal 
                   deal={contract}
@@ -46,8 +63,7 @@ export default function App() {
                   agentList={agentList}
                   contactsList={contactsList}  />
                 </Theme>
-              </div>
-              
+          </div>    
           {/* </GridItem> */}
           
           {/* <GridItem
@@ -58,7 +74,11 @@ export default function App() {
               },
             }} 
           > */}
-                  <CreateTask/>
+                  <CreateTask
+                  handleClick={handleClickSubmit}
+                  setType={setType}
+                  type={type}
+                  />
           {/* </GridItem> */}
 
           {/* <GridItem 
@@ -71,23 +91,19 @@ export default function App() {
               },
             }}> */}
               <div className="events">
-                  <History events={contract.events}/> 
+                  <History events={events}/> 
               </div>
           {/* </GridItem>
       </Grid> */}
-
       </div>
-
-    
     </Fragment>
-
-    
   );
 }
 
 const contracts = [
   {
     id: 1,
+    name: 'Покупка оборудования для обработки ископаемых',
     company: "ПАО АНК БАШНЕФТЬ",
     amount: 2000000,
     curr: "Тенге",
@@ -158,6 +174,7 @@ const contracts = [
   },
   {
     id: 2,
+    name: 'Оказание логистических услуг',
     company: "ПАО ТАТНЕФТЬ",
     amount: 500000,
     curr: "Рубль",
@@ -176,12 +193,19 @@ const contracts = [
           date: new Date("2002-02-16 14:15")
       },
       {
-          id: 2,
+          id: 1,
           type: "task",
           message: "Составить пакет документов для Ивана Иванова",
           person: "Алексей Петров",
           date: new Date("2002-02-01 14:15")
       },
+      {
+        id: 7,
+        type: "tg",
+        message: "Привет",
+        person: "Регина Минигалеева",
+        date: new Date("2024-05-16 14:15")
+    },
       {
           id: 3,
           type: "comment",
@@ -214,6 +238,7 @@ const contracts = [
   },
   {
     id: 3,
+    name: 'Покупка башкирской породы коров',
     company: "ООО Рога и копыта",
     amount: 500,
     curr: "Доллар",
@@ -283,4 +308,4 @@ const contracts = [
           ] 
   }
 ]
-const contract = contracts[0] // выбираем контракт
+const contract = contracts[1] // выбираем контракт

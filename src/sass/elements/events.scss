@@ -1,0 +1,71 @@
+.events{
+    grid-area: event;
+    justify-self: auto;
+    border-radius: 4px;
+    background-color: #fff;
+    max-height: 70vh;
+    overflow: scroll;
+    height: 59vh;
+    .title-date{
+      display: block;
+      text-align: center;
+      font-size: 0.8rem;
+      margin: 1em;
+      color: #0020334D;
+    }
+    .event{
+      padding: 0.7em;
+      margin: 1em 1em 0 1em;
+      border-radius: 5px;
+      background-color: #F3F4F7CC;
+      font-size: 14px;
+      color: #002033;
+      &-type{
+        font-weight: 700;
+      }
+      &-date{
+        color: #0020334D;
+      }
+      &-message{
+        font-weight: 600;
+        margin: 0;
+      }
+      &-person{
+        font-size: 12px;
+        color: #6E6E6E;
+        margin-top: 0.5em;
+      }
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      span{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 0.5em;
+        :last-child{
+          margin-left: auto;
+        }
+      }
+  
+      
+    }
+    .event span div{
+      color: #fff;
+      padding: 7.5px 9px;
+      background-color: $brand-color;
+      border-radius: 50%;
+    }
+    .event span .whats-app{
+      background-color: #25D366;
+    }
+    .event span .tg{
+      background-color: #2AABEE;
+    }
+    
+  }  
+  .content-parent {
+    height: 0px;
+    overflow: hidden;
+    transition: height ease 0.9s;
+  }

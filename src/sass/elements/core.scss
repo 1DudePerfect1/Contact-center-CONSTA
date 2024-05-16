@@ -1,0 +1,14 @@
+$brand-color: #E94C46;
+$grey-background: #F3F4F7CC;
+$grey: #6E6E6E;
+
+%btn{
+    background-color: #E94C46;
+    margin-right: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    width: 8rem;
+    height: 2rem;
+}

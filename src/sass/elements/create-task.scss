@@ -1,0 +1,50 @@
+@import './core.scss';
+
+.create-task{
+    grid-area: task;
+    padding: 1em;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    .tabs{
+      margin: 0;
+    }
+    .tabs button{
+      padding-right: 1em;
+      border-radius: 0 ;
+      border-bottom: 1px solid #00426947;
+      color: #00203399;
+      font-family: 'Inter';
+    }
+    .tabs button:hover{
+      color: $brand-color;
+      border-bottom: 1px solid $brand-color;
+      border-bottom-left-radius: 0;
+    }
+  
+    textarea{
+      margin-top: 1px;
+      border-style: none;
+      resize: none;
+      outline: none;
+    }
+    .file-field{
+      margin: 1vh 0;
+    }
+    .send-btn{
+      
+      &:last-child{
+        background-color: #fff;
+        color: $grey;
+        &:hover{
+          border: 1px solid #aaaaaa;
+        }
+      }
+      &:hover{
+        border: 1px solid #a70903;
+      }
+      @extend %btn
+    }
+  }

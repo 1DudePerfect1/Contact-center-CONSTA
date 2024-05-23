@@ -11,8 +11,8 @@ import axios from "axios";
 export default function CreateTask({handleClick, setType, type}){
     const [taskContent, setTaskContent] = useState('')
     const number = '79991309576'
-    const username = ''
-
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedName, setSelectedName] = useState("");
 
     const handleSubmit = () => {
         if (taskContent.trim() !== '') {
@@ -63,7 +63,15 @@ export default function CreateTask({handleClick, setType, type}){
             setTaskContent(''); // Очистка текстового поля после отправки
         }
       };
+      const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            setSelectedName(file.name); // Сохраняем имя файла
+        }
+    };
 
+      
     return (
         <div className="create-task">
                 <TaskTabs setType={setType} type={type}/>
@@ -83,10 +91,17 @@ export default function CreateTask({handleClick, setType, type}){
                 placeholder="Напишите ваш комментарий"  /> CONSTA */}
 
                 <div className="file-field">
-                <FileField>     
+                {/* <FileField>     
                     <FaPaperclip />
                     <span>Прикрепить</span>
-                </FileField>
+                </FileField> */}
+                <input 
+                type="file" 
+                id='file-input' 
+                className='file'
+                onChange={handleFileChange}/>
+                <span><label htmlFor="file-input"><FaPaperclip />Прикрепить</label></span>
+                {selectedName && <span >{selectedName}</span>}
                 </div>
                 <Layout>
                     <button className="send-btn" onClick={() => handleSubmit()}>Отправить</button>

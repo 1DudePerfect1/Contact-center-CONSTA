@@ -2,7 +2,6 @@
 @import './sass/elements/deal.scss';
 @import './sass/elements/create-task.scss';
 @import './sass/elements/events.scss';
-
 @font-face {
   font-family: 'Montserrat';
   src:local('Montserrat') 
@@ -11,7 +10,6 @@
       url('./fonts/Montserrat-VariableFont_wght.ttf') format("ttf"),
       url('./fonts/Montserrat-VariableFont_wght.ttf') format("svg");
 }
-
 body{
   background-color: $grey-background;
   margin: 0;
@@ -21,11 +19,9 @@ body{
   font-family: "Montserrat";
   font-weight: 400;
 }
-
 ::-webkit-scrollbar {
   width: 0;
 }
-
 .main{
   display: grid;
   grid-template-columns: 0.35fr 0.65fr;
@@ -36,7 +32,6 @@ body{
     "deal event";
   gap: 1%;
 }
-
 .btn-header{
   &:last-child{
     &:hover{
@@ -47,7 +42,6 @@ body{
     border: 1px solid #a70903;
   }
 }
-
 @media (max-width: 800px) {
   .main{
     grid-template-columns: 1fr;
@@ -70,7 +64,6 @@ body{
     }
   }
   .deal{
-
   }
   body{
     padding: 3vh 0 0 0 ;
@@ -84,7 +77,5 @@ body{
         font-size: 1em;
       }
     }
-
   }
-
 }

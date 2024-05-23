@@ -1,5 +1,3 @@
-
-
 export default function TaskTabs({setType, type}){
   const getButtonStyle = (buttonType) => ({
     color: type === buttonType ? '#E94C46' : '#00203399',

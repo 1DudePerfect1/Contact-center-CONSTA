@@ -38,6 +38,12 @@
         font-size: 0.8em;
         margin-left: 0.5em;
       }
+      .file {
+        opacity: 0;
+        width: 0.1px;
+        height: 0.1px;
+        position: absolute;
+      }
     }
     .send-btn{
       

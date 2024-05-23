@@ -1,4 +1,4 @@
-import { Layout } from "@consta/uikit/Layout"
+// import { Layout } from "@consta/uikit/Layout"
 import Event from "./Event"
 
 export default function History({events}){
@@ -14,10 +14,8 @@ export default function History({events}){
             return <span className="title-date">{date === new Date().toLocaleDateString() ? 'Сегодня': date}</span>
         }
       }
-      
     return (
         <>
-
                 {events.map(el => 
                     <>
                         {createTitleDate(el.date.toLocaleDateString(),titleDateArray)}
@@ -28,8 +26,7 @@ export default function History({events}){
                             myDate={myDate}/>
                         </div> 
                     </>                    
-                )}
-            
+                )}           
         </>
     )
 }

@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
-import HeadTabs from './HeadTabs';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import {Grid, GridItem} from '@consta/uikit/Grid'
-import Deal from './Deal';
-import CreateTask from './CreateTask';
-import History from './History';
-import {Theme, presetGpnDefault} from '@consta/uikit/Theme'
 // import {myPresset} from '@consta/uikit/Theme'
-import { Fragment } from 'react';
-import { Header } from './Header';
+import MainComponent from './MainComponent';
 export default function App() {
   const companyList = contracts.map(item => {return ({id: item.id, label: item.company})})
   const directionList = contracts.map(item => {return ({id: item.id, label: item.direction})})
@@ -15,88 +10,30 @@ export default function App() {
   const agentList = contracts.map(item => {return ({id: item.id, label: item.agent, subLabel: 'sobaka@gmail.com'})})
   const contactsList = contracts.map(item => {return ({id: item.id, label: item.contacts, subLabel: 'koshka@gmail.com'})})
   
-  const [events,setEvents] = useState(contract.events)
-  const [type, setType] = useState('comment');
- 
-  const handleClickSubmit = (message) => {
-    console.log(events)
-    setEvents(prevEvents => [
-      ...prevEvents,
-      {id: prevEvents.length + 1, type: type, message: message, person: "Ildar Suleymanov", date: new Date()}
-    ]
-    )
-  }
+  
 
-  useEffect(() => {
-    console.log('as')
-  }, [events])
+
   
   return (
-    <Fragment>
-      <Header name={contract.name}/>
-      <HeadTabs/>
-        <div className='main'>
-      {/* <Grid 
-      cols={1} 
-      breakpoints={{
-          640: {
-            cols: 10,
-          },
-        }}> CONSTA*/}
+    <>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<><p>Укажите путь</p></>}/>
+        {contracts.map((el) => 
+        
+        <Route key={el.id} path={"/" + el.id}  element={
+        <MainComponent 
+          contract={el}
+          companyList={companyList}
+          directionList={directionList}
+          stageList={stageList}
+          agentList={agentList}
+          contactsList={contactsList}/>}/>
+        )}
+      </Routes>          
+    </BrowserRouter>
 
-          {/* <GridItem 
-          col={1}
-          breakpoints={{
-              640: {
-                col: 4,
-                row: 2,
-              },
-            }}
-          > CONSTA*/}
-          <div className="deal-section">    
-              <Theme preset={presetGpnDefault}>
-                  <Deal 
-                  deal={contract}
-                  companyList={companyList}
-                  directionList={directionList}
-                  stageList={stageList}
-                  agentList={agentList}
-                  contactsList={contactsList}  />
-                </Theme>
-          </div>    
-          {/* </GridItem> */}
-          
-          {/* <GridItem
-          col={1}
-          breakpoints={{
-              640: {
-                col: 6,
-              },
-            }} 
-          > */}
-                  <CreateTask
-                  handleClick={handleClickSubmit}
-                  setType={setType}
-                  type={type}
-                  />
-          {/* </GridItem> */}
-
-          {/* <GridItem 
-          col={1}
-          colStart={1}
-          breakpoints={{
-              640: {
-                col: 6,
-                colStart: 5,
-              },
-            }}> */}
-              <div className="events">
-                  <History events={events}/> 
-              </div>
-          {/* </GridItem>
-      </Grid> */}
-      </div>
-    </Fragment>
+    </>
   );
 }
 
@@ -238,7 +175,7 @@ const contracts = [
   },
   {
     id: 3,
-    name: 'Покупка башкирской породы коров',
+    name: 'Организация транспортировки',
     company: "ООО Рога и копыта",
     amount: 500,
     curr: "Доллар",

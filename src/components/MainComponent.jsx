@@ -16,7 +16,6 @@ export default function MainComponent({contract, companyList, directionList, sta
 
  
     const handleClickSubmit = (message) => {
-        console.log(events)
         setEvents(prevEvents => [
         ...prevEvents,
         {id: prevEvents.length + 1, type: type, message: message, person: "Ildar Suleymanov", date: new Date()}
@@ -24,7 +23,6 @@ export default function MainComponent({contract, companyList, directionList, sta
         )
     }
     useEffect(() => {
-        console.log('as')
     }, [events])
   return (
     <Fragment>

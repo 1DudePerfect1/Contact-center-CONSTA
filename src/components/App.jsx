@@ -3,22 +3,61 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import {Grid, GridItem} from '@consta/uikit/Grid'
 // import {myPresset} from '@consta/uikit/Theme'
 import MainComponent from './MainComponent';
+import axios from 'axios';
 export default function App() {
   const companyList = contracts.map(item => {return ({id: item.id, label: item.company})})
   const directionList = contracts.map(item => {return ({id: item.id, label: item.direction})})
   const stageList = contracts.map(item => {return ({id: item.id, label: item.stage})})
   const agentList = contracts.map(item => {return ({id: item.id, label: item.agent, subLabel: 'sobaka@gmail.com'})})
   const contactsList = contracts.map(item => {return ({id: item.id, label: item.contacts, subLabel: 'koshka@gmail.com'})})
-  
-  
+  const [deals, setDeals] = useState(null)
+  const [incident, setIncident] = useState(null)
 
+  useEffect(()=> {
+      axios.get(`http://localhost:5000/deals`)
+      .then((response) => {
+        setDeals(response.data) 
+      })
+      .catch((err)=> {
+        console.log(err)
+      })
 
+      axios.get(`http://localhost:5000/events/2`)
+      .then((response) => {
+        setIncident(response.data) 
+      })
+      .catch((err)=> {
+        console.log(err)
+      })
+  },[setDeals, setIncident])
+  console.log(deals)
+  console.log(incident)
+  
+  // function setDeals(data){
+  //   setData(
+  //     data.map((el) => 
+  //       contracts = [
+  //         { id: el.id,
+  //           name: el.name,
+  //           company: el.companyName,
+  //           amount: el.amount,
+  //           curr: el.curr,
+  //           direction: el.direction,
+  //           stage: el.stage,
+  //           numberContract: el.numberContract,
+  //           agent: el.repName,
+  //           contacts: el.contacts,
+  //           date: el.date}
+  //       ]
+  //     )
+  //   )
+  // }
   
   return (
     <>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<><p>Укажите путь</p></>}/>
+        <Route path='/' element={<><span>Укажите путь</span></>}/>
         {contracts.map((el) => 
         
         <Route key={el.id} path={"/" + el.id}  element={
